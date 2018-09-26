@@ -28,3 +28,5 @@ candidates 中的数字可以无限制重复被选取。
   [3,5]
 ]
 ```
+
+[答案解析](https://github.com/xiaofandegeng/leetcode/blob/master/39.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/index.js)
