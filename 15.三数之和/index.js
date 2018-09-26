@@ -2,49 +2,48 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-var threeSum = function(nums){
-    let len = nums.length;
-    if(len < 3) return []
-
-    let result = []
-    nums.sort((a,b) => a-b)
-
+var threeSum = function (nums) {
+    let n = nums.length;
+    if (n < 3) return [];
+    let result = [];
+    nums.sort((a, b) => a - b);
+  
     let index = 0;
-    while(index < len-2){
-        if(nums[index] === nums[index-1] && index>0){
-            index++
-            continue
-        }
-        let target = nums[index];
-        let start = index + 1;
-        let end = len - 1;
-        let sum = nums[start] + nums[end]
+    while (index < n - 2) {
+      if (index > 0 && nums[index] === nums[index - 1]) {
+        index++;
+        continue;
+      }
+      let target = -nums[index];
+  
+      let start = index + 1;
+      let end = n - 1;
+      while (start < end) {
+  
+        let sum = nums[start] + nums[end];
+        if (sum > target) {
+          end--;
+        } else if (sum < target) {
+          start++;
+        } else {
 
-
-        while(start < end){
-            if(target < sum){
-                index++
-                continue
-            }
-            if(target > sum){
-                end--
-                continue
-            }
-            else{
-                if(start-1 > index && nums[start]===nums[start-1]){
-                    start++
-                    continue
-                }
-                if(end+1 < len && nums[end] === end[end+1]){
-                    end--
-                    continue
-                }
-                else{
-                    result.push([nums[index],nums[start],nums[end]])
-                }
-            }
+          if (start - 1 > index && nums[start] === nums[start - 1]) {
+            start++;
+            continue;
+          }
+          if (end + 1 < n &&  nums[end] === nums[end + 1]) {
+            end--;
+            continue;
+          }
+          result.push([nums[index], nums[start], nums[end]]);
+          start++;
         }
-        index++
+  
+      }
+  
+      index++;
     }
-    return result
-}
+    return result;
+  };
+  
+  
